@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <h1>Url Site</h1>
+    <h1 id = "table"><% bookmark.map(bookmark=> { %>
+        <p>Name: <%= bookmark.name %></p>
+        <p>Url: <%= bookmark.url %></p>
+        <% }) %></h1>
+
+            <form action="/" method="post">
+                <input id="name" type="text" name="name" placeholder="name">
+                <input id="url" type="text" name="url" placeholder="url">
+                <input id="submit" type="submit" value="Submit your bookmark">
+            </form>
+</body>
+
+</html>
