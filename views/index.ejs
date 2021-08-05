@@ -8,16 +8,34 @@
 
 <body>
     <h1>Url Site</h1>
-    <h1 id = "table"><% bookmark.map(bookmark=> { %>
-        <p>Name: <%= bookmark.name %></p>
-        <p>Url: <%= bookmark.url %></p>
-        <% }) %></h1>
-
-            <form action="/" method="post">
-                <input id="name" type="text" name="name" placeholder="name">
-                <input id="url" type="text" name="url" placeholder="url">
-                <input id="submit" type="submit" value="Submit your bookmark">
+    <h1 id="table">
+        <% bookmark.map((bookmark, index)=> { %>
+            <div id="bookmark-<%=index%>">
+                <!-- give each button the specfic ID - connected to them -->
+                <p>Name: <%= bookmark.name %>
+                </p>
+                <p>Url: <%= bookmark.url %>
+                </p>
+            </div>
+            <form action="/<%= bookmark.id %>?_method=DELETE" method="post">
+                <input id="bookmark-<%=index%>-delete" type="submit" value="Delete" />
             </form>
+            <form action="/update/<%= bookmark.id %>?_method=GET" method="GET">
+                <input id="bookmark-<%=index%>-update" type="submit" value="edit" />
+            </form>
+
+            <% }) %>
+
+                <!-- if i wanted to take it to another page and then redirect you can include /bookmarks/ here and /bookmark/:id in app.js file -->
+
+    </h1>
+
+    <form action="/" method="post">
+        <input id="name" type="text" name="name" placeholder="name">
+        <input id="url" type="text" name="url" placeholder="url">
+        <input id="submit" type="submit" value="Submit your bookmark">
+    </form>
+
 </body>
 
 </html>
